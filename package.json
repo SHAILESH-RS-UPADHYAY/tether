@@ -1,0 +1,14 @@
+{
+  "name": "tether",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension that carries a conversation from one AI assistant to another as a Markdown capsule.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\""
+  },
+  "devDependencies": {
+    "linkedom": "^0.18.12"
+  },
+  "license": "MIT"
+}
