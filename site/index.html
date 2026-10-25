@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tether — carry a chat to another AI assistant</title>
+  <meta name="description" content="A Chrome extension that packs a Claude, ChatGPT or Gemini conversation into one compact Markdown capsule and types it into another assistant.">
+  <link rel="icon" href="../brand/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="top">
+    <img src="../brand/wordmark.svg" alt="Tether" height="34">
+    <a class="gh" href="#install">Install</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="board" aria-label="Departure board">
+        <div class="board-row head"><span>From</span><span>To</span><span>Context</span><span>Status</span></div>
+        <div class="board-row" data-row="CLD|GEM|6.1K|BOARDING"></div>
+        <div class="board-row" data-row="GPT|CLD|2.0K|ON TIME"></div>
+        <div class="board-row" data-row="GEM|GPT|14.8K|LANDED"></div>
+      </div>
+      <div class="pitch">
+        <h1>Hit a usage cap mid-thought? Take the whole conversation with you.</h1>
+        <p>Tether reads the chat you have open in Claude, ChatGPT or Gemini, packs it into one Markdown capsule (your goal, the rules you set, the latest code, the last exchange) and types it into the next assistant. Nothing leaves your browser.</p>
+      </div>
+    </section>
+
+    <section class="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <h2 id="demo-title">Try the packer</h2>
+        <p>Paste any transcript with lines starting <code>User:</code> and <code>Assistant:</code>. This is the exact code the extension runs.</p>
+      </div>
+      <div class="demo-grid">
+        <div class="pane">
+          <label for="src">Transcript</label>
+          <textarea id="src" spellcheck="false"></textarea>
+        </div>
+        <div class="pane">
+          <div class="pane-head">
+            <label for="out">Capsule</label>
+            <div class="sizes" role="radiogroup" aria-label="Capsule size">
+              <button type="button" role="radio" data-size="compact" aria-checked="false">Compact</button>
+              <button type="button" role="radio" data-size="standard" aria-checked="true">Standard</button>
+              <button type="button" role="radio" data-size="full" aria-checked="false">Full</button>
+            </div>
+          </div>
+          <textarea id="out" readonly></textarea>
+          <p class="meter" id="meter" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="install" aria-labelledby="how-title">
+      <h2 id="how-title">Install in a minute</h2>
+      <ol>
+        <li><b>Get the folder</b>Download this repository, then open <code>chrome://extensions</code>.</li>
+        <li><b>Load it</b>Turn on Developer mode, choose <em>Load unpacked</em> and pick the <code>extension</code> folder.</li>
+        <li><b>Carry a chat</b>Open a conversation, press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>T</kbd>, check it in, then board it to another assistant.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="foot">Tether stores capsules in your browser only and never sends a message for you.</footer>
+
+  <script src="../extension/src/capsule.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>
