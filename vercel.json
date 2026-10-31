@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node scripts/stage-site.js",
+  "outputDirectory": "dist",
+  "redirects": [{ "source": "/", "destination": "/site/", "permanent": false }]
+}
