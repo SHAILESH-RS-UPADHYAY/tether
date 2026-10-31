@@ -4,37 +4,48 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tether</title>
+  <meta name="description" content="Check a Claude, ChatGPT or Gemini chat in as a Markdown capsule and board it to another assistant.">
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <header class="top">
-    <img src="../icons/icon-32.png" width="22" height="22" alt="">
+    <img src="../icons/icon-32.png" width="24" height="24" alt="">
     <span class="brand">Tether</span>
-    <span class="clock" id="clock" aria-hidden="true"></span>
   </header>
 
   <section class="board" aria-labelledby="board-title">
-    <h1 id="board-title" class="board-label">Now boarding</h1>
-    <div class="board-grid">
-      <span class="col-label">From</span>
-      <span class="col-label">Chat</span>
-      <span class="col-label right">Turns</span>
-      <span class="flaps" id="from" data-width="3"></span>
-      <span class="title" id="chat-title">—</span>
-      <span class="flaps right" id="turns" data-width="3"></span>
+    <div class="board-head">
+      <h1 id="board-title">Now boarding</h1>
+      <time class="clock" id="clock"></time>
     </div>
+    <dl class="board-grid">
+      <div class="cell">
+        <dt>From</dt>
+        <dd class="flaps" id="from" data-width="3"></dd>
+      </div>
+      <div class="cell cell-chat">
+        <dt>Chat</dt>
+        <dd class="title" id="chat-title">Looking at this tab</dd>
+      </div>
+      <div class="cell cell-turns">
+        <dt>Turns</dt>
+        <dd class="flaps" id="turns" data-width="3" data-align="end"></dd>
+      </div>
+    </dl>
     <p class="status" id="status" role="status"></p>
   </section>
 
   <section class="controls" aria-label="Check in">
     <fieldset class="size" id="size">
       <legend>Capsule size</legend>
-      <label><input type="radio" name="size" value="compact"><span><b>Compact</b><i>≈2k tokens</i></span></label>
-      <label><input type="radio" name="size" value="standard" checked><span><b>Standard</b><i>≈6k tokens</i></span></label>
-      <label><input type="radio" name="size" value="full"><span><b>Full</b><i>every turn</i></span></label>
+      <div class="size-track">
+        <input type="radio" name="size" id="size-compact" value="compact"><label for="size-compact"><b>Compact</b><span>about 2k tokens</span></label>
+        <input type="radio" name="size" id="size-standard" value="standard" checked><label for="size-standard"><b>Standard</b><span>about 6k tokens</span></label>
+        <input type="radio" name="size" id="size-full" value="full"><label for="size-full"><b>Full</b><span>every turn</span></label>
+      </div>
     </fieldset>
     <button class="primary" id="checkin" type="button" disabled>
-      <span>Check in this chat</span><kbd>Alt Shift T</kbd>
+      <span class="primary-label">Check in this chat</span><kbd>Alt Shift T</kbd>
     </button>
   </section>
 
@@ -45,14 +56,14 @@
     </div>
     <ol id="tickets" class="tickets"></ol>
     <div id="empty" class="empty" hidden>
-      <div class="empty-flaps" aria-hidden="true"><span>N</span><span>O</span><span> </span><span>P</span><span>A</span><span>S</span><span>S</span></div>
-      <p>No capsules yet. Open a chat in Claude, ChatGPT or Gemini and check it in. Your boarding passes appear here.</p>
+      <div class="empty-flaps" aria-hidden="true"><span>N</span><span>O</span><span class="gap"></span><span>P</span><span>A</span><span>S</span><span>S</span></div>
+      <p>No capsules yet. Open a chat in Claude, ChatGPT or Gemini and check it in; its boarding pass prints here.</p>
     </div>
   </section>
 
   <details class="settings">
     <summary>Handoff note</summary>
-    <label for="note">Sent first, so the next assistant knows what it is reading. Leave empty for the default.</label>
+    <label for="note">Sent first, so the next assistant knows what it is reading. Leave it empty for the default.</label>
     <textarea id="note" rows="4" spellcheck="true"></textarea>
   </details>
 
@@ -61,9 +72,9 @@
   <template id="ticket-tpl">
     <li class="ticket">
       <div class="stub">
-        <span class="code from"></span>
-        <svg class="route" viewBox="0 0 24 8" aria-hidden="true"><path d="M0 4h20m-4-3 4 3-4 3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-        <span class="code to">···</span>
+        <span class="code from flaps" data-width="3"></span>
+        <svg class="route" viewBox="0 0 8 24" aria-hidden="true"><path d="M4 0v20m-3-4 3 4 3-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        <span class="code to flaps" data-width="3"></span>
       </div>
       <div class="body">
         <p class="t-title"></p>
