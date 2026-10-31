@@ -1,0 +1,42 @@
+@font-face { font-family: "Martian Mono"; font-weight: 400; font-display: swap; src: url("../fonts/martian-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Martian Mono"; font-weight: 800; font-display: swap; src: url("../fonts/martian-mono-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Atkinson Next"; font-weight: 400; font-display: swap; src: url("../fonts/atkinson-hyperlegible-next-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Atkinson Next"; font-weight: 600; font-display: swap; src: url("../fonts/atkinson-hyperlegible-next-latin-600-normal.woff2") format("woff2"); }
+
+/* Graphite night: the default, the board's own room. */
+:root {
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.2rem; --text-xl: 1.44rem; --text-2xl: 1.728rem; --text-3xl: 2.074rem;
+  --text-display-s: 1.44rem; --text-display: 1.728rem; --text-section: 1.2rem; --text-title: 1rem; --text-lead: 1rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(72% 0.15 30); --color-success: oklch(76% 0.13 150);
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  --color-paper: oklch(19.6% 0.006 271); --color-paper-2: oklch(22.7% 0.008 274); --color-paper-3: oklch(28% 0.012 264);
+  --color-ink: oklch(93.2% 0.013 86.8); --color-ink-2: oklch(77% 0.014 86.9); --color-muted: oklch(60% 0.011 84.6);
+  --color-rule: oklch(31% 0.013 267);
+  --color-accent: oklch(81.7% 0.166 76.3); --color-accent-ink: oklch(19.2% 0.027 82.6); --color-focus: oklch(83% 0.18 76);
+  --color-accent-text: oklch(81.7% 0.166 76.3);
+  /* The board is a physical object: it stays dark on ticket stock too. */
+  --color-board: oklch(17.7% 0.004 264.5); --color-board-rim: oklch(27.5% 0.008 264); --color-board-label: oklch(66% 0.01 85);
+  --color-board-text: oklch(88% 0.012 86); --color-flap-top: oklch(31.5% 0.011 264); --color-flap-bottom: oklch(26.5% 0.008 264);
+  --color-seam: oklch(15.6% 0.004 264); --color-flap-ink: oklch(81.7% 0.166 76.3); --color-flap-ink-low: oklch(71.8% 0.152 74.2);
+  --color-flap-idle: oklch(52.9% 0.01 84.6);
+  --font-display: "Martian Mono", ui-monospace, monospace; --font-body: "Atkinson Next", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--font-display);
+  --radius-card: 8px; --radius-control: 6px; --radius-flap: 3px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
+  --tracking-display: -0.02em;
+  color-scheme: dark;
+}
+
+/* Ticket stock: the same system printed on card. */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-paper: oklch(94.7% 0.014 84.6); --color-paper-2: oklch(91.4% 0.02 84.6); --color-paper-3: oklch(87.5% 0.024 84.6);
+    --color-ink: oklch(22.2% 0.006 84); --color-ink-2: oklch(42% 0.014 80); --color-muted: oklch(56% 0.018 79);
+    --color-rule: oklch(85.1% 0.026 84.6);
+    --color-accent-text: oklch(50% 0.11 65); --color-focus: oklch(56% 0.16 66);
+    --color-error: oklch(50% 0.17 30); --color-success: oklch(46% 0.11 150);
+    color-scheme: light;
+  }
+}
