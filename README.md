@@ -47,6 +47,8 @@ npm test        # capsule budgets, DOM→Markdown, site adapters, screen stitchi
 
 Load it: `chrome://extensions` → Developer mode → **Load unpacked** → choose `extension/`.
 
+The landing page in `site/` runs the extension's own packer. `npm run deploy` stages it with the files it loads into `dist/` and ships it as a Cloudflare Worker with static assets (`npx cf auth login` once first); `/` redirects to `/site/`.
+
 ## Project layout
 
 ```
