@@ -3,6 +3,11 @@
 <p align="center"><b>Carry a conversation from one AI assistant to another, without re-explaining it.</b><br>
 A Chrome extension for Claude, ChatGPT and Gemini. Everything stays in your browser.</p>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/readme/trip-dark.svg">
+  <img src="docs/readme/trip-light.svg" width="100%" alt="Tether in motion: the open chat is read turn by turn, the board counts to 18, a boarding pass prints, and the capsule is typed into the next assistant.">
+</picture>
+
 ---
 
 You are forty messages deep in Claude, the usage cap hits, and Gemini knows nothing. Copy-pasting the thread drags in button labels, breaks code blocks and floods the new model's context. Tether reads the conversation from the page, packs it into one **capsule**, and types it into the next assistant's message box.
