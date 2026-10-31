@@ -134,9 +134,9 @@ html:not(.js) .tabs { display: none; }
 .panel { animation: panel-in var(--dur-long) var(--ease-out) both; }
 @keyframes panel-in { from { opacity: 0; transform: translateY(6px); } }
 
-.moment { margin: 0; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-3xl); align-items: center; }
-.moment .frame--popup { inline-size: min(100%, 380px); justify-self: center; }
-.moment figcaption { font: 400 var(--text-title)/1.4 var(--font-body); color: var(--color-ink); max-width: 30ch; }
+.moment { margin: 0; display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: var(--space-3xl); align-items: center; }
+.moment .frame--popup { inline-size: min(100%, 380px); }
+.moment figcaption { font: 400 var(--text-section)/1.3 var(--font-body); color: var(--color-ink); max-width: 22ch; }
 .moment--land { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "stub caption" "typed caption"; row-gap: var(--space-lg); }
 .moment--land .frame--stub { grid-area: stub; }
 .moment--land .typed { grid-area: typed; }
