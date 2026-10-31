@@ -20,12 +20,18 @@
   },
   "commands": {
     "_execute_action": {
-      "suggested_key": { "default": "Alt+Shift+T" },
+      "suggested_key": {
+        "default": "Alt+Shift+T"
+      },
       "description": "Open the Tether board"
     }
   },
-  "background": { "service_worker": "src/background.js" },
-  "permissions": ["storage"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "storage"
+  ],
   "host_permissions": [
     "https://claude.ai/*",
     "https://chatgpt.com/*",
@@ -40,13 +46,21 @@
         "https://chat.openai.com/*",
         "https://gemini.google.com/*"
       ],
-      "js": ["src/sites.js", "src/dom-to-md.js", "src/stub.js", "src/content.js"],
+      "js": [
+        "src/sites.js",
+        "src/dom-to-md.js",
+        "src/stub.js",
+        "src/content.js"
+      ],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["fonts/*.woff2"],
+      "resources": [
+        "fonts/*.woff2",
+        "styles/tokens.css"
+      ],
       "matches": [
         "https://claude.ai/*",
         "https://chatgpt.com/*",
