@@ -5,8 +5,6 @@
 /* Hallmark · dropped [data-row] board rows · the hero's departure board drawn in styled divs is replaced by a recording of the real popup board (47c names styled-div product UI) */
 /* Hallmark · reworded "Hit a usage cap mid-thought? Take the whole conversation with you." to "Check in on Claude. Land on Gemini." · 58 names the hero */
 /* Hallmark · reworded the 40-word hero paragraph to "Tether packs the whole conversation into one capsule and types it in." · 58 names the hero */
-@import url("../extension/styles/tokens.css");
-@import url("../extension/styles/base.css");
 
 /* The page's type scale (the extension popup keeps the app scale). */
 :root {

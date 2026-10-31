@@ -6,7 +6,12 @@
   <title>Tether carries a chat to another AI assistant</title>
   <meta name="description" content="A Chrome extension that packs a Claude, ChatGPT or Gemini conversation into one Markdown capsule and types it into another assistant.">
   <link rel="icon" href="../brand/mark.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="media/poster-dark.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="media/poster-dark.webp" fetchpriority="high" media="not all and (prefers-color-scheme: light)">
+  <link rel="preload" as="image" href="media/poster-light.webp" fetchpriority="high" media="(prefers-color-scheme: light)">
+  <link rel="preload" href="../extension/fonts/martian-mono-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../extension/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../extension/styles/tokens.css">
+  <link rel="stylesheet" href="../extension/styles/base.css">
   <link rel="stylesheet" href="site.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
