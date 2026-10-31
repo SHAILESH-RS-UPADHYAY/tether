@@ -3,69 +3,172 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tether — carry a chat to another AI assistant</title>
-  <meta name="description" content="A Chrome extension that packs a Claude, ChatGPT or Gemini conversation into one compact Markdown capsule and types it into another assistant.">
+  <title>Tether: carry a chat to another AI assistant</title>
+  <meta name="description" content="A Chrome extension that packs a Claude, ChatGPT or Gemini conversation into one Markdown capsule and types it into another assistant.">
   <link rel="icon" href="../brand/mark.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="media/poster-dark.webp" fetchpriority="high">
   <link rel="stylesheet" href="site.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <header class="top">
-    <img src="../brand/wordmark.svg" alt="Tether" height="34">
-    <a class="gh" href="#install">Install</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="container nav-row">
+      <a class="wordmark" href="#main" aria-label="Tether, back to the top"><img src="../brand/wordmark.svg" alt="" width="296" height="64"></a>
+      <a class="btn btn--quiet" href="#install">Install</a>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="board" aria-label="Departure board">
-        <div class="board-row head"><span>From</span><span>To</span><span>Context</span><span>Status</span></div>
-        <div class="board-row" data-row="CLD|GEM|6.1K|BOARDING"></div>
-        <div class="board-row" data-row="GPT|CLD|2.0K|ON TIME"></div>
-        <div class="board-row" data-row="GEM|GPT|14.8K|LANDED"></div>
-      </div>
-      <div class="pitch">
-        <h1>Hit a usage cap mid-thought? Take the whole conversation with you.</h1>
-        <p>Tether reads the chat you have open in Claude, ChatGPT or Gemini, packs it into one Markdown capsule (your goal, the rules you set, the latest code, the last exchange) and types it into the next assistant. Nothing leaves your browser.</p>
-      </div>
-    </section>
-
-    <section class="demo" aria-labelledby="demo-title">
-      <div class="demo-head">
-        <h2 id="demo-title">Try the packer</h2>
-        <p>Paste any transcript with lines starting <code>User:</code> and <code>Assistant:</code>. This is the exact code the extension runs.</p>
-      </div>
-      <div class="demo-grid">
-        <div class="pane">
-          <label for="src">Transcript</label>
-          <textarea id="src" spellcheck="false"></textarea>
-        </div>
-        <div class="pane">
-          <div class="pane-head">
-            <label for="out">Capsule</label>
-            <div class="sizes" role="radiogroup" aria-label="Capsule size">
-              <button type="button" role="radio" data-size="compact" aria-checked="false">Compact</button>
-              <button type="button" role="radio" data-size="standard" aria-checked="true">Standard</button>
-              <button type="button" role="radio" data-size="full" aria-checked="false">Full</button>
-            </div>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container split">
+        <div class="intro">
+          <h1 id="hero-title">Check in on Claude.<br>Land on Gemini.</h1>
+          <p class="lead">Tether packs the whole conversation into one capsule and types it in.</p>
+          <div class="actions">
+            <a class="btn" href="#install">Install Tether</a>
+            <a class="btn btn--quiet" href="#packer">Try the packer</a>
           </div>
-          <textarea id="out" readonly></textarea>
-          <p class="meter" id="meter" aria-live="polite"></p>
+        </div>
+        <figure class="hero-shot" data-loop>
+          <div class="frame" data-slot="hero" data-kind="product" data-alt="The Tether popup checking in a Claude chat and printing its boarding pass">
+            <video muted loop playsinline preload="metadata" width="760" height="1280" poster="media/poster-dark.webp" data-poster-light="media/poster-light.webp" aria-label="The Tether popup reads an 18-turn Claude chat, prints its boarding pass, then previews the GPT and GEM gates.">
+              <source src="media/checkin-light.webm" type="video/webm" media="(prefers-color-scheme: light)">
+              <source src="media/checkin-dark.webm" type="video/webm">
+            </video>
+          </div>
+          <figcaption>
+            <span>Recorded from the extension: an 18-turn chat checked in.</span>
+            <button class="btn btn--quiet btn--small" type="button" data-loop-toggle>Pause</button>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="packer" id="packer" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="head-split">
+          <h2 id="demo-title">Try the packer</h2>
+          <p class="lead">This packer is the same code the extension runs.</p>
+        </div>
+        <div class="bench">
+          <div class="pane">
+            <div class="pane-head"><label for="src">Thread, as <code>User:</code> and <code>Assistant:</code> lines</label></div>
+            <textarea id="src" spellcheck="false"></textarea>
+          </div>
+          <div class="pane">
+            <div class="pane-head">
+              <label for="out">Capsule</label>
+              <div class="sizes" role="radiogroup" aria-label="Capsule size">
+                <button type="button" role="radio" data-size="compact" aria-checked="false">Compact</button>
+                <button type="button" role="radio" data-size="standard" aria-checked="true">Standard</button>
+                <button type="button" role="radio" data-size="full" aria-checked="false">Full</button>
+              </div>
+            </div>
+            <textarea id="out" readonly></textarea>
+          </div>
+        </div>
+        <div class="meter">
+          <p id="meter" aria-live="polite"></p>
+          <div class="gauge" aria-hidden="true"><span id="gauge-fill"></span></div>
         </div>
       </div>
     </section>
 
-    <section class="how" id="install" aria-labelledby="how-title">
-      <h2 id="how-title">Install in a minute</h2>
-      <ol>
-        <li><b>Get the folder</b>Download this repository, then open <code>chrome://extensions</code>.</li>
-        <li><b>Load it</b>Turn on Developer mode, choose <em>Load unpacked</em> and pick the <code>extension</code> folder.</li>
-        <li><b>Carry a chat</b>Open a conversation, press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>T</kbd>, check it in, then board it to another assistant.</li>
-      </ol>
+    <section class="moments" id="moments" aria-labelledby="moments-title">
+      <div class="container">
+        <h2 id="moments-title">From check-in to landing</h2>
+        <div class="switch" data-switch>
+          <div class="tabs" role="tablist" aria-label="Moments">
+            <button type="button" role="tab" id="tab-checkin" aria-controls="panel-checkin" aria-selected="true">Check in</button>
+            <button type="button" role="tab" id="tab-board" aria-controls="panel-board" aria-selected="false" tabindex="-1">Board</button>
+            <button type="button" role="tab" id="tab-land" aria-controls="panel-land" aria-selected="false" tabindex="-1">Land</button>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-checkin" aria-labelledby="tab-checkin">
+            <figure class="moment">
+              <div class="frame frame--popup" data-slot="checkin" data-kind="product" data-alt="The popup after checking in an 18-turn Claude chat">
+                <picture>
+                  <source srcset="media/checked-in-light.webp" media="(prefers-color-scheme: light)">
+                  <img src="media/checked-in-dark.webp" width="760" height="1280" alt="The Tether popup: the board shows CLD and 18 turns, and a boarding pass for the chat sits in the manifest." loading="lazy">
+                </picture>
+              </div>
+              <figcaption>The board counts turns as it reads. Long Claude chats are scrolled through, so none are missed.</figcaption>
+            </figure>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-board" aria-labelledby="tab-board">
+            <figure class="moment">
+              <div class="frame frame--popup" data-slot="board" data-kind="product" data-alt="The popup with the GEM gate hovered, the stub showing GEM">
+                <picture>
+                  <source srcset="media/board-light.webp" media="(prefers-color-scheme: light)">
+                  <img src="media/board-dark.webp" width="760" height="1404" alt="Two boarding passes in the manifest; the pointer rests on GEM and the first pass's stub reads CLD to GEM." loading="lazy">
+                </picture>
+              </div>
+              <figcaption>Rest on a gate and the stub flips to it, so you see the destination before you commit.</figcaption>
+            </figure>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-land" aria-labelledby="tab-land">
+            <figure class="moment moment--land">
+              <div class="frame frame--stub" data-slot="land" data-kind="product" data-alt="The boarding-pass notice on the destination page">
+                <picture>
+                  <source srcset="media/stub-light.webp" media="(prefers-color-scheme: light)">
+                  <img src="media/stub-dark.webp" width="800" height="172" alt="Tether's notice on the destination page: capsule landed, CLD to GEM, read it over, then send." loading="lazy">
+                </picture>
+              </div>
+              <pre class="typed" aria-label="The first lines of the capsule as typed"><code id="typed"></code></pre>
+              <figcaption>The capsule is typed into the message box and never sent. You read it, then press send.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="where" id="where" aria-labelledby="where-title">
+      <div class="container">
+        <h2 id="where-title">Where it works</h2>
+        <table>
+          <thead><tr><th scope="col">Assistant</th><th scope="col">Address</th><th scope="col">How Tether reads it</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Claude</th><td><code>claude.ai</code></td><td>Scrolls the chat, because only the turns on screen exist in the page.</td></tr>
+            <tr><th scope="row">ChatGPT</th><td><code>chatgpt.com</code></td><td>Reads the current layout and falls back to the older one.</td></tr>
+            <tr><th scope="row">Gemini</th><td><code>gemini.google.com</code></td><td>Loads earlier turns first, then types through its editor.</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Needs Chrome 116 or newer. Permissions: storage and these three sites, with no network requests.</p>
+      </div>
+    </section>
+
+    <section class="install" id="install" aria-labelledby="how-title">
+      <div class="container install-grid">
+        <div>
+          <h2 id="how-title">Install in a minute</h2>
+          <ol class="steps">
+            <li><div><b>Get the folder</b>Download this repository, then open <code>chrome://extensions</code>.</div></li>
+            <li><div><b>Load it</b>Turn on Developer mode, choose <em>Load unpacked</em> and pick the <code>extension</code> folder.</div></li>
+            <li><div><b>Carry a chat</b>Open a conversation, press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>T</kbd>, check it in, then board it to another assistant.</div></li>
+          </ol>
+        </div>
+        <figure class="install-shot">
+          <div class="frame frame--popup" data-slot="manifest" data-kind="product" data-alt="The manifest holding two boarding passes">
+            <picture>
+              <source srcset="media/manifest-light.webp" media="(prefers-color-scheme: light)">
+              <img src="media/manifest-dark.webp" width="760" height="1404" alt="The Tether manifest with passes from Claude and Gemini, each with its gates, copy, save and tear actions." loading="lazy">
+            </picture>
+          </div>
+          <figcaption>The manifest keeps your last 20 capsules.</figcaption>
+        </figure>
+      </div>
     </section>
   </main>
 
-  <footer class="foot">Tether stores capsules in your browser only and never sends a message for you.</footer>
+  <footer class="colophon">
+    <div class="container">
+      <p>Tether stores capsules in your browser only and never sends a message for you. A Manifest V3 extension for Chrome, released under the MIT licence.</p>
+    </div>
+  </footer>
 
   <script src="../extension/src/capsule.js"></script>
   <script src="site.js"></script>
+  <script>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
+document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
 </body>
 </html>
