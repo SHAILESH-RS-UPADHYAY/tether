@@ -8,6 +8,13 @@ A Chrome extension for Claude, ChatGPT and Gemini. Everything stays in your brow
   <img src="docs/readme/trip-light.svg" width="100%" alt="Tether in motion: the open chat is read turn by turn, the board counts to 18, a boarding pass prints, and the capsule is typed into the next assistant.">
 </picture>
 
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=tether&amp;theme=dark&amp;w=m">
+  <source media="(max-width: 600px)" srcset="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=tether&amp;theme=light&amp;w=m">
+  <source media="(prefers-color-scheme: dark)" srcset="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=tether&amp;theme=dark">
+  <img src="https://shailesh-stats.vercel.app/api/plate?name=repo&amp;repo=tether&amp;theme=light" width="100%" alt="Commits per week and languages for Tether, drawn live from GitHub.">
+</picture>
+
 ---
 
 You are forty messages deep in Claude, the usage cap hits, and Gemini knows nothing. Copy-pasting the thread drags in button labels, breaks code blocks and floods the new model's context. Tether reads the conversation from the page, packs it into one **capsule**, and types it into the next assistant's message box.
